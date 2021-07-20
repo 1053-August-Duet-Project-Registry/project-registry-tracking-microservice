@@ -11,8 +11,8 @@ pool:
 variables:
 - group: project-registry-sonarcloud
 - group: project-registry-discord
-- name: tracking-microservice
-  value: "gateway"
+- name: microservice
+  value: "tracking-microservice"
 - name: coveragePath
   value: "src/main/java/com/revature/registry"
 - name: workDir
