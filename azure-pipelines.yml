@@ -10,7 +10,7 @@ variables:
 - name: tracking-microservice
   value: "gateway"
 - name: coveragePath
-  value: "src/main/java/com/revature/registry/aspect,src/main/java/com/revature/registry/controller,src/main/java/com/revature/registry/model,src/main/java/com/revature/registry/model/dto,src/main/java/com/revature/registry/repository,src/main/java/com/revature/registry/service"
+  value: "src/main/java/com/revature/registry"
 - name: workDir
   value: "./"
 - name: maven
