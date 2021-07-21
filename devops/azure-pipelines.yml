@@ -57,6 +57,8 @@ stages:
         discordChannel: $(discordAnalysisChannel)
         discordKey: $(discordAnalysisKey)
 
+    - script: echo $(Build.Repository.Uri)
+    
     displayName: Analyze --> Job
 
     # Dockerize job goes here
