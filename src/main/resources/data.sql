@@ -33,6 +33,6 @@ insert into tag (name, description) values ('SpringMVC', 'This project used MVC 
 insert into tag (name, description) values ('SPRING ORM', 'This project used Spring ORM for tables');
 insert into tag (name, description) values ('GIT', 'This project used a GIT REPO');
 -- insert projects
-insert into project(description, name, owner, status, phase) values('rideforce project', 'rideforce', 3, 3, 2);
-insert into project(description, name, owner, status, phase) values('Finds potential condadites by scrapping facebook.', 'Make A Recruiting Application', 1, 2, 3);
-insert into project(description, name, owner, status, phase) values('Allows for staging to be remote', 'Caliber Staging Module', 4, 3, 2);
+insert into project(description, name, owner, status) values('rideforce project', 'rideforce', 3, 3);
+insert into project(description, name, owner, status) values('Finds potential condadites by scrapping facebook.', 'Make A Recruiting Application', 1, 2);
+insert into project(description, name, owner, status) values('Allows for staging to be remote', 'Caliber Staging Module', 4, 3);
