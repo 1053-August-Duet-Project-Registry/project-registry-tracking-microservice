@@ -38,11 +38,11 @@ class StatusControllerTest {
 
 	@MockBean
 	private StatusService statusService;
-	
-	 @BeforeEach
-	    public void setUp() {
-	        mockMvc = MockMvcBuilders.standaloneSetup(statusController).build();
-	    }
+
+    @BeforeEach
+    public void setUp() {
+        mockMvc = MockMvcBuilders.standaloneSetup(statusController).build();
+    }
 
 	@Test
 	void testGetAllStatuses() throws Exception {
@@ -57,14 +57,14 @@ class StatusControllerTest {
 
 		List<Status> statuses = Lists.newArrayList(stat1, stat2);
 		when(statusService.getAllStatuses()).thenReturn(statuses);
-		
+
 		// mock request to controller
         mockMvc.perform(get("/api/status")).andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.*", isA(List.class)))
                 .andExpect(MockMvcResultMatchers.jsonPath("$[0].name").value("NEEDS_ATTENTION"))
                 .andExpect(MockMvcResultMatchers.jsonPath("$[1].name").value("ACTIVE"))
                 .andExpect(MockMvcResultMatchers.jsonPath("$[0].id").value(1))
-                .andExpect(MockMvcResultMatchers.jsonPath("$[1].id").value(2));		
+                .andExpect(MockMvcResultMatchers.jsonPath("$[1].id").value(2));
 	}
 
 	@Test
@@ -72,22 +72,22 @@ class StatusControllerTest {
 		 // mock the return of getProjectById from ProjectService
         Status status = new Status();
         status.setId(2);
-        status.setName("ACTIVE");        
+        status.setName("ACTIVE");
 
         when(statusService.getStatusById((anyInt()))).thenReturn(status);
 
         // mock request to controller
         mockMvc.perform(get("/api/status/id/2")).andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.name").value("ACTIVE"))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(2));                
+                .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(2));
 	}
-	
+
 	@Test
 	void testGetStatusByIdWhenUnavailableId() throws Exception {
-		 // mock the return of getProjectById from ProjectService 
+		 // mock the return of getProjectById from ProjectService
         when(statusService.getStatusById((anyInt()))).thenReturn(null);
-        
+
         // mock request to controller
-        mockMvc.perform(get("/api/status/id/3")).andExpect(status().isBadRequest());                                
+        mockMvc.perform(get("/api/status/id/3")).andExpect(status().isBadRequest());
 	}
 }
