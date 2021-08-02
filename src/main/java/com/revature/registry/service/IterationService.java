@@ -30,8 +30,7 @@ public class IterationService {
         Optional<Iteration> iteration = iterationRepository.findById(id);
         if (iteration.isPresent()) {
             newIteration.setId(id);
-            Iteration saved = iterationRepository.save(newIteration);
-            return saved;
+            return iterationRepository.save(newIteration);
         }
 
         return null;

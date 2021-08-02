@@ -15,10 +15,11 @@ import org.springframework.stereotype.Component;
 @Component
 @Aspect
 public class LoggingAspect {
-    final static Logger LOG = Logger.getLogger(LoggingAspect.class);
+    static final Logger LOG = Logger.getLogger(LoggingAspect.class);
 
     @Pointcut("execution(* com.revature.registry.service.*.*(..))")
     public void exec() {
+        // This method is needed for named PointCut.
     }
 
     @AfterReturning(value = "exec()", returning = "retVal")
@@ -27,7 +28,7 @@ public class LoggingAspect {
         if (retVal == null) {
             LOG.error(jp.getSignature() + "(" + args + ")" + " returns null");
         } else {
-            Object ret = retVal instanceof Boolean && !(Boolean) retVal ? "false" : retVal;
+            Object ret = retVal instanceof Boolean && Boolean.FALSE.equals(retVal) ? "false" : retVal;
             LOG.info(jp.getSignature() + "(" + args + ")" + ": " + "returns " + ret);
         }
     }
