@@ -1,6 +1,7 @@
 package com.revature.registry.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.when;
@@ -9,21 +10,17 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
+import com.revature.registry.ProjectRegistryTrackingApplication;
+import com.revature.registry.model.Iteration;
+import com.revature.registry.repository.IterationRepository;
+
 import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-
-import com.revature.registry.ProjectRegistryTrackingApplication;
-import com.revature.registry.model.Iteration;
-import com.revature.registry.repository.IterationRepository;
-import com.revature.registry.service.IterationService;
 
 @SpringBootTest(classes = ProjectRegistryTrackingApplication.class)
 @ExtendWith(SpringExtension.class)
@@ -165,7 +162,6 @@ class IterationServiceTest {
         iteration.setEndDate(LocalDate.now());
         iteration.setBatchId("107235");
 
-        ResponseEntity<Iteration> expected = new ResponseEntity<Iteration>(HttpStatus.NO_CONTENT);
         // mock check to see if object with id exists in db
         when(iterationRepository.findById(anyInt())).thenReturn(Optional.of(iteration));
         // you don't have to mock the delete since it has a void return type
