@@ -23,4 +23,5 @@ public class Tag {
 
     private String description;
 
+    private boolean isEnabled;
 }
