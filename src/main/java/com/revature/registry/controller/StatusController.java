@@ -19,22 +19,21 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/api/status", produces = MediaType.APPLICATION_JSON_VALUE)
 //@CrossOrigin(origins = "http://localhost:4200")
 public class StatusController {
-	@Autowired
-	private StatusService statusService;
+    @Autowired
+    private StatusService statusService;
 
-	@GetMapping("")
-	public ResponseEntity<List<Status>> getAllStatuses() {
-		return ResponseEntity.ok(statusService.getAllStatuses());
-	}
+    @GetMapping("")
+    public ResponseEntity<List<Status>> getAllStatuses() {
+        return ResponseEntity.ok(statusService.getAllStatuses());
+    }
 
-	@GetMapping("/id/{id}")
-	public ResponseEntity<Status> getStatusById(@PathVariable("id") int id) {
-		Optional<Status> status = Optional.ofNullable(statusService.getStatusById(id));	
-		
-		if (status.isPresent()) {
-			return ResponseEntity.ok(status.get());			
-		} else {
-			return ResponseEntity.badRequest().build();			
-		}
-	}
+    @GetMapping("/id/{id}")
+    public ResponseEntity<Status> getStatusById(@PathVariable("id") int id) {
+        Status status = statusService.getStatusById(id);
+        if (status != null) {
+            return ResponseEntity.ok(status);
+        } else {
+            return ResponseEntity.badRequest().build();
+        }
+    }
 }

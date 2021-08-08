@@ -51,7 +51,7 @@ public class Project {
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "project_tags_jt", joinColumns = { @JoinColumn(name = "project_id") }, inverseJoinColumns = {
             @JoinColumn(name = "tag_id") })
-    private List<Tag> tags;
+    private List<Tag> tags = new ArrayList<>();
 
     @OneToMany(mappedBy = "project")
     @JsonIgnoreProperties("project")
