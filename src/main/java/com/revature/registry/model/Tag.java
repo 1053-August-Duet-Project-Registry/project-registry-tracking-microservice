@@ -1,5 +1,6 @@
 package com.revature.registry.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,5 +24,6 @@ public class Tag {
 
     private String description;
 
-    private boolean isEnabled;
+    @Column(name = "is_enabled")
+    private Boolean isEnabled;
 }

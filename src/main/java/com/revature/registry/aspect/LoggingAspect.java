@@ -3,6 +3,9 @@ package com.revature.registry.aspect;
 import java.util.Arrays;
 import java.util.List;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import org.apache.log4j.Logger;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
@@ -26,10 +29,15 @@ public class LoggingAspect {
     public void afterReturning(JoinPoint jp, Object retVal) {
         List<Object> args = Arrays.asList(jp.getArgs());
         if (retVal == null) {
-            LOG.error(jp.getSignature() + "(" + args + ")" + " returns null");
+            LOG.warn(jp.getSignature() + "(" + args + ")" + " returns null");
         } else {
             Object ret = retVal instanceof Boolean && Boolean.FALSE.equals(retVal) ? "false" : retVal;
-            LOG.info(jp.getSignature() + "(" + args + ")" + ": " + "returns " + ret);
+            try {
+                LOG.info(jp.getSignature() + "(" + args + ")" + ": " + "returns "
+                        + new ObjectMapper().writeValueAsString(ret));
+            } catch (JsonProcessingException e) {
+                e.printStackTrace();
+            }
         }
     }
 
