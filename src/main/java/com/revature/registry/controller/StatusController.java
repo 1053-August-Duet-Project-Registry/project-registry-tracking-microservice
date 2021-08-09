@@ -1,7 +1,6 @@
 package com.revature.registry.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import com.revature.registry.model.Status;
 import com.revature.registry.service.StatusService;
