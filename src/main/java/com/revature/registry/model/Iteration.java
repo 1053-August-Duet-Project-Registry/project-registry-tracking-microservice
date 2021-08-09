@@ -41,11 +41,20 @@ public class Iteration {
 
     private String batchId;
 
+    
+    /*
+    * this will show the current projects that relates to this iteration. 
+    * To prevent infinity loop in rendering json, JsonIgnoreProperties annotation is added so project will not show iteration key and its value
+    */
     @ManyToOne
     @JoinColumn(name = "project_id")
     @JsonIgnoreProperties("iterations")
     private Project project;
 
+    /*
+    * this will show the current phase of this iteration.
+    * To prevent infinity loop in rendering json, JsonIgnoreProperties annotation is added so phase will not show iteration key and its value
+    */
     @ManyToOne
     @JoinColumn(name = "phase")
     @JsonIgnoreProperties("iterations")
