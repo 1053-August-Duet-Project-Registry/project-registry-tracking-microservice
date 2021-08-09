@@ -46,8 +46,8 @@ import com.revature.registry.service.PhaseService;
 
 		phaseList = new ArrayList<>();
 
-		phase1 = new Phase(1, "test phase kind", "test phase description");
-		phase2 = new Phase(2, "test phase kind2", "test phase description2");
+		phase1 = new Phase(1, "test phase kind", "test phase description", new ArrayList<>());
+		phase2 = new Phase(2, "test phase kind2", "test phase description2", new ArrayList<>());
 		phaseList.add(phase1);
 		phaseList.add(phase2);
 	}
@@ -76,7 +76,7 @@ import com.revature.registry.service.PhaseService;
 				.andExpect(MockMvcResultMatchers.jsonPath("$.id").value(1))
 				.andExpect(MockMvcResultMatchers.jsonPath("$.kind").value("test phase kind"));
 	}
-	
+
 	@Test
 	 void getPhaseByIdTest2() throws Exception {
 		when(phaseService.getPhaseById(2)).thenReturn(phase2);
