@@ -10,7 +10,6 @@ import java.util.Optional;
 import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -25,7 +24,6 @@ import com.revature.registry.repository.StatusRepository;
 class StatusServiceTest {
 
 	@Autowired
-	@InjectMocks
 	private StatusService statusService;
 
 	@MockBean
@@ -55,19 +53,19 @@ class StatusServiceTest {
 		s.setName("ACTIVE");
 
 		when(statusRepository.findById((anyInt()))).thenReturn(Optional.of(s));
-		
+
 		// check to see if the method returns the correct data
 		assertThat(statusService.getStatusById(1)).isEqualTo(s);
 	}
-	
+
 	@Test
 	void testGetStatusByIdWhenStatusNotPresent() {
-		
+
 		// no need to mock anything since iterationRepository.findById() will return an
         // empty optional
 		when(statusRepository.findById((anyInt()))).thenReturn(Optional.empty());
-		
+
 		// check to see if the method returns the correct data
-		assertThat(statusService.getStatusById(1)).isNull();;
+		assertThat(statusService.getStatusById(1)).isNull();
 	}
 }
