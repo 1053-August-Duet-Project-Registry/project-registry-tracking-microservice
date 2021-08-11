@@ -43,5 +43,8 @@ insert into project_tags_jt(project_id, tag_id) values(1, 1);
 insert into project_tags_jt(project_id, tag_id) values(1, 2);
 insert into project_tags_jt(project_id, tag_id) values(1, 3);
 -- insert iterations
-insert into iteration (start_date, end_date, batch_id, project_id, phase) values ('2021-05-27', '2021-08-13','abc',1, 2);
-insert into iteration (start_date, end_date, batch_id, project_id, phase) values ('2021-06-01', '2021-09-05','def',2, 4);
+insert into iteration (start_date, end_date, batch_id, project_id, phase) values ('2021-08-09', '2021-09-13','TR-1201',1, 2);
+insert into iteration (start_date, end_date, batch_id, project_id, phase) values ('2021-08-10', '2021-09-15','TR-1072',1, 3);
+insert into iteration (start_date, end_date, batch_id, project_id, phase) values ('2021-08-11', '2021-09-16','TR-1140',2, 4);
+insert into iteration (start_date, end_date, batch_id, project_id, phase) values ('2021-08-12', '2021-09-17','TR-1021',2, 1);
+insert into iteration (start_date, end_date, batch_id, project_id, phase) values ('2021-08-12', '2021-09-17','TR-1067',2, 1);
