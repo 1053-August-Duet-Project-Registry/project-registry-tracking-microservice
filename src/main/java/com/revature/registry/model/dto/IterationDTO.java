@@ -2,6 +2,7 @@ package com.revature.registry.model.dto;
 
 import java.time.LocalDate;
 
+import com.revature.registry.model.Phase;
 import com.revature.registry.model.Project;
 
 import lombok.Data;
@@ -17,5 +18,7 @@ public class IterationDTO {
     private LocalDate startDate;
 
     private LocalDate endDate;
+
+    private Phase phase;
 
 }
