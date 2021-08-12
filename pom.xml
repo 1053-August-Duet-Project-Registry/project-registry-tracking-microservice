@@ -9,7 +9,7 @@
 	</parent>
 	<groupId>com.revature</groupId>
 	<artifactId>project-registry-tracking-microservice</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<name>project-registry-tracking-microservice</name>
 	<description>Project Tracking microservice for Project Registry</description>
 
